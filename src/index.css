@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-obsidian: #07080a;
+    --bg-surface: #0d0f13;
+    --bg-elevated: #12151b;
+    --accent-crimson: #e11d2e;
+    --text-primary: #f5f6f8;
+    --text-secondary: #98a0ad;
+    --font-display: 'Montserrat', system-ui, sans-serif;
+    --font-condensed: 'Oswald', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    background-color: #07080a;
+    color: #f5f6f8;
+    font-family: var(--font-body);
+    scroll-behavior: auto;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #07080a;
+    color: #f5f6f8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-condensed {
+  font-family: var(--font-condensed);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+}
+
+/* Subtle architectural film grain - extremely restrained */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Editorial flat-bordered interactive row - no synthetic gradients */
+.editorial-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.editorial-row:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Clean solid bespoke buttons - no generic glow-blobs */
+.btn-solid-white {
+  background-color: #f5f6f8;
+  color: #07080a;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.22s ease;
+}
+
+.btn-solid-white:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-solid-white:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-solid-crimson {
+  background-color: #d90d1e;
+  color: #ffffff;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.22s ease;
+}
+
+.btn-solid-crimson:hover {
+  background-color: #ef1628;
+  transform: translateY(-2px);
+}
+
+.btn-solid-crimson:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-outline-clean {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f5f6f8;
+  transition: border-color 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
+}
+
+.btn-outline-clean:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Subtle glossy sweep on project cards */
+.card-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 24%,
+    rgba(255, 255, 255, 0.05) 48%,
+    rgba(255, 255, 255, 0.09) 50%,
+    transparent 74%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.card-sheen:hover::after {
+  transform: translateX(130%);
+}
+
+/* Clean minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07080a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b303b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e11d2e;
+}
+
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
